@@ -1,3 +1,11 @@
+\title{\vspace{160px} \textbf{\huge{Telecommunication Theory}} \\\vspace{17.5px} \LARGE{Lab report 2}  \vspace{10px}}
+\author{Alessandro Trigolo}
+\date{September 18, 2023}
+
+\begin{document}
+\maketitle \newpage
+
+
 \section*{Objective}\label{objective}
 The goal of the laboratory is to observe the effect produced by the \textit{Gaussian White Noise} (\textbf{GWN}) during a data transmission. Initially, a data set is provided and then it is converted to a signal. The GWN will be added to the signal for the purpose of simulating the disturbance during a transmission and finally, the received signal will be detected. There will be two types of modulation of the signal: the first one will not modify the signal at all meanwhile the second one, called \textit{Non-Return to Zero} (\textbf{NRZ}), will invert and amplify the signal in order to reduce the impact of the GWN. During this phase, it is possible to notice the difference that the \textit{Signal to Noise Ratio} (\textbf{SNR}) makes during the transmission and how important it is to choose the modulation of a signal.
 
@@ -197,3 +205,6 @@ ylim([-.5, 1.5]);
 \section*{Conclusions}\label{conclusions}
 Through these simulations, we can conclude that the NRZ modulation of the signal is more reliable because the signal is not affected by the Gaussian White Noise even though the signal's energy is not significantly higher than the energy of the noise. This means that the NRZ modulation of the signal increases the success rate of the transmission thanks to the doubled signal amplitude. If the signal is strong enough (i.e., 100 or 1000 times more powerful than the GWN) by observing the simulations, it is possible to conclude that not modulating the signal is sufficient to have a successful transmission but, clearly, the simulations do not represent a real transmission because, other than the GWN, there could be different types of disturbances that could be stronger than the GWN so, consequently, it is always better to modulate the signal. 
 
+
+
+\end{document}
