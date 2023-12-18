@@ -1,4 +1,4 @@
-## Telecommunication Theory laboratory works and reports
+# Telecommunication Theory laboratory works and reports
 
 This repository contains the lab works accomplished in the RTU "Telecommunication Theory" course.
 
