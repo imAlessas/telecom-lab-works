@@ -1,6 +1,6 @@
 # Telecommunication Theory laboratory works and reports
 
-This repository contains the lab works accomplished in the RTU "Telecommunication Theory" course.
+This repository contains the lab works coded in the RTU "Telecommunication Theory" course. The lab works are coded in MATLAB while the reports are PDFs files generated using LaTeX. 
 
 ### Laboratory Work 1
 
