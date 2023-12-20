@@ -1,0 +1,57 @@
+clc, clear, format compact
+
+
+% Task 1
+T = 1; % symbol duration [seconds]
+f0 = 10; % carrier frequecy [Hz]
+
+N = 15; % number of symbols
+sB = randi(2, 1, N) - 1; % random sequence of 1 and 0
+
+SNR = 50; % Db
+
+
+
+% plot binary data
+f = figure(1);
+f.Position = [450, 100, 700, 600];
+subplot(311), stairs(0 : T : N * T, [sB sB(end)]), grid on
+ylim([-0.1 1.1]), xlabel("Time [s]"), ylabel("Binary data")
+
+
+
+% plot BASK signal wihout errors
+dt =  T / 200;
+t = 0 : dt : T - dt;
+s0 = sin (2 * pi * f0 * t);
+
+
+% Generatr BASK
+sBASK = kron(sB, s0);
+tBASK = 0 : dt : N * T - dt;
+subplot(312), plot(tBASK, sBASK), grid on
+ylim([-1.1 1.1]), xlabel("Time [s]"), ylabel("Binary data")
+
+
+% Generate noise
+Eb = sum(s0.^2);
+EbN0 = 10^(SNR / 10);
+N0 = Eb / EbN0;
+sigma = sqrt(N0 / 2);
+sNoise = sigma * randn(1, N * 200);
+
+
+
+% Add noise
+sBASKN = sBASK + sNoise;
+subplot(313), plot(tBASK, sBASKN), grid on
+ylim([-1.1 1.1]), xlabel("Time [s]"), ylabel("BASK signal with noise");
+
+
+
+
+
+
+
+
+
