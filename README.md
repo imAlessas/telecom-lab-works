@@ -1,12 +1,12 @@
 # Telecommunication Theory laboratory works and reports
 
-This repository contains the lab works coded in the RTU "Telecommunication Theory" course. The lab works are coded in MATLAB while the reports are PDFs files generated using LaTeX. 
+This repository contains the lab works coded in the RTU "Telecommunication Theory" course. The lab works are coded in MATLAB while the reports are PDF files generated using LaTeX.
 
 ### Laboratory Work 1
 
 The first lab work aims to analyze the simplest transmission techniques. First, a random dataset of bits is generated and then converted into a rectangular signal. Secondly, the Gaussian White Noise (_GWN_) is added to the source signal simulating a real-world disturbance and then, it will be detected with a simple threshold-based algorithm.
 
-The same procedure will be made with a second type of modulation called __NRZ__ modulation. Shortly, this modulation doubles the distance between the zero-voltage-level and the one-voltage-level. 
+The same procedure will be made with a second type of modulation called __NRZ__ modulation. Shortly, this modulation doubles the distance between the zero-voltage-level and the one-voltage-level.
 
 ### Laboratory Work 2
 
@@ -16,7 +16,7 @@ In the second part of the lab work, the carrier type changed into a __BASK__ and
 
 ### Laboratory Work 3
 
-_coming soon_
+The lab work number 3 is a preliminary code that will be used in the lab 4 and 5. In this lab work, the three modulation techniques __BASK__, __BFSK__ and ___BPSK__ are used to transmit a random sequence of binary data. In this lab, the _GWN__ is not added using a MATLAB function but it is created in the script.
 
 ### Laboratory Work 4
 
