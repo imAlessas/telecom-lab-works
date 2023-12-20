@@ -1,6 +1,9 @@
 %% BASK
 clc, clear, format compact
 
+
+% run("../lab-3/BASK.m")
+
 % we need to get the enery of the carrier E_b
 
 
@@ -49,6 +52,7 @@ subplot(313), plot(tBASK, sBASKN), grid on
 ylim([-1.1 1.1]), xlabel("Time [s]"), ylabel("BASK signal with noise");
 
 
+% BASK
 
 
 
