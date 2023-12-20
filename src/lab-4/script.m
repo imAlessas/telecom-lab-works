@@ -13,7 +13,7 @@ f0 = 10; % carrier frequecy = 10Hz
 N = 10; % number of symbols
 sB = randi(2, 1, N) - 1; % random sequence of 1 and 0
 
-SNR = 50; %Db
+SNR = 15; %Db
 
 
 
@@ -101,7 +101,7 @@ f0 = 10; % carrier frequecy = 10Hz
 N = 10; % number of symbols
 sB = randi(2, 1, N) - 1; % random sequence of 1 and 0
 
-SNR = 50; %Db
+SNR = 15; %Db
 
 
 
@@ -211,7 +211,7 @@ sB = randi(2, 1, N) - 1; % random sequence of 1 and 0
 
 sB_NRZ = -2 * sB + 1;
 
-SNR = 50; %Db
+SNR = 15; %Db
 
 
 
