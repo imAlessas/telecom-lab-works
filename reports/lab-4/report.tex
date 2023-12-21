@@ -5,9 +5,98 @@
 \begin{document}
 \maketitle \newpage
 
+\section*{Objective}
+\todo{write objective}
+
+\lstset{style = MATLAB}
+\section*{Source code and plots}
+The source code provided in this section has to be appended to the code produced during laboratory 3 so there won't be any explanations regarding the above-mentioned code. Alongside the lines of code, there will be some explanatory comments to make the lab 4 source code more readable.
+
+\subsection*{Task 4}
+The first task of the lab work asked to add to the already-written code the MATLAB script for the optimal correlation receiver. Of course, the receiver has to be implemented in the three modulation techniques.
+
+In all three techniques, the optimal receiver is coded inside in a \textsl{for loop} that cycles through all the symbols, so from 1 to $N$.
+
+\subsubsection*{BASK}
+The first optimal correlator receiver to implement is for the BASK modulation. After creating the integrator vector, inside the for loop, the correlator multiplication is achieved by multiplying element-wise the carrier signal and the disturbed BASK signal. After that, with the help of the cumulative sum (\texttt{cumsum}) function the integral is discretely calculated. At the end of the for loop, the detection is achieved by comparing the symbols in the integrator signal with half of the carrier energy, which is the threshold for the BASK-modulated signal.
+
+\begin{lstlisting}
+% preparation for integrator output signal 
+integrator = []; 
+
+for k = 1 : N
+    % indexes of the signal segment
+    index = (1:200) + (k-1)*200;
+
+    % correlator multiplication 
+    sM1 = s0 .* BASK_with_noise(index);  
+
+    % calculate continuous integral using a finite sum
+    integrator = [integrator, cumsum(sM1)]; 
+
+    % symbol detection is achieved by comparing the integrator signal with half of the carrier energy
+    detected_symbols(k) = integrator(end) > Eb/2;
+end
+\end{lstlisting}
+
+\subsubsection*{BFSK}
+\todo{Finish here}
+
+\begin{lstlisting}
+% preparation for two integrator output signals
+integrator1 = []; 
+integrator2 = [];
+
+for k = 1:N
+    % indexes of the signal segment
+    index = (1:200) + (k-1)*200;
+
+    % 1st correlator multiplication 
+    sM1 = s1 .* BFSK_with_noise(index);  
+
+    % calculate 1st continuous integral using a finite sum
+    integrator1 = [integrator1, cumsum(sM1)];
+
+
+    % 2nd correlator multiplication 
+    sM2 = s2 .* BFSK_with_noise(index);
+
+    % calculate 2nd continuous integral using a finite sum
+    integrator2 = [integrator2, cumsum(sM2)];
+
+    % detects symbols
+    detected_symbols(k) = integrator1(end) > integrator2(end);
+end
+\end{lstlisting}
+
+\subsubsection*{BPSK}
+\todo{finish here}
+\begin{lstlisting}
+% preparation for integrator output signal 
+integrator = [];    
+
+for k = 1 : N
+    % indexes of the signal segment
+    index = (1:200) + (k-1)*200;
+
+    % correlator multiplication 
+    sM1 = s0 .* BPSK_with_noise(index);  
+
+    % calculate continuous integral using a finite sum
+    integrator = [integrator, cumsum(sM1)]; 
+
+    % symbol detection is achieved by comparing the integrator signal with the 0-threshold
+    detected_symbols(k) = integrator(end) < 0;
+end
+\end{lstlisting}
+
+\subsection*{Task 2}
+\todo{finish here}
 
 
 
+\section*{Conclusions}
+\todo{write conclusions}
 
 
 
