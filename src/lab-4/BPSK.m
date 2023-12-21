@@ -9,14 +9,21 @@ ylim([-4, 4]), xlabel("Time [s]"), ylabel("BPSK signal with noise")
 
 
 % Recieve each symbol
-integrator = []; % empty brakets, peparation for integrator output signal 
+integrator = []; % empty brakets, preparation for integrator output signal 
 
-for k = 1:N
-    index = (1:200) + (k-1)*200; % indicises of signal segment
-    sM1 = s0 .* BPSK_with_noise(index);  % correlator multiplication 
-    integrator = [integrator, cumsum(sM1)]; % calculate continuous integral
+for k = 1 : N
+    % indexes of the signal segment
+    index = (1:200) + (k-1)*200;
 
-    detected_symbols(k) = integrator(end) < 0; % detected symbols compared with threshold
+    % correlator multiplication 
+    sM1 = s0 .* BPSK_with_noise(index);  
+
+    % calculate continuous integral using a finite sum
+    integrator = [integrator, cumsum(sM1)]; 
+
+    % symbol detection is achieved by comparing the integrator signal with
+    % the 0-threshold
+    detected_symbols(k) = integrator(end) < 0;
 end
 
 

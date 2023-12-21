@@ -13,19 +13,29 @@ ylim([-4 4]), xlabel("Time [s]"), ylabel("BFSK signal with noise")
 
 
 % Recieve each symbol
-integrator1 = []; % empty brakets, peparation for integrator output signal 
+% peparation for two integrator output signals
+integrator1 = []; 
 integrator2 = [];
 
 for k = 1:N
-    index = (1:200) + (k-1)*200; % indicises of signal segment
-    sM1 = s1 .* BFSK_with_noise(index);  % correlator multiplication 
-    integrator1 = [integrator1, cumsum(sM1)]; % calculate continuous integral
+    % indexes of the signal segment
+    index = (1:200) + (k-1)*200;
 
-    sM2 = s2 .* BFSK_with_noise(index);  % correlator multiplication 
-    integrator2 = [integrator2, cumsum(sM2)]; % calculate continuous integral
+    % 1st correlator multiplication 
+    sM1 = s1 .* BFSK_with_noise(index);  
+
+    % calculate 1st continuous integral using a finite sum
+    integrator1 = [integrator1, cumsum(sM1)];
 
 
-    detected_symbols(k) = integrator1(end) > integrator2(end); % detected symbols compared with threshold
+    % 2nd correlator multiplication 
+    sM2 = s2 .* BFSK_with_noise(index);
+
+    % calculate 2nd continuous integral using a finite sum
+    integrator2 = [integrator2, cumsum(sM2)];
+
+    % detects symbols
+    detected_symbols(k) = integrator1(end) > integrator2(end);
 end
 
 
