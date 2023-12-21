@@ -1,8 +1,12 @@
+% This file creates the report document by first importing the document settings and the MATLAB theme.
+% It then includes the i-th report for compilation.
+% This choice streamlines the process, using a single main.tex file instead of having a separate main file for each report.
+
 \documentclass{article}
 
-\input{utils/packages}
+\input{utils/settings.tex}
 
-\input{utils/MatLab theme}
+\input{utils/MATLAB-theme.tex}
 
 \input{lab-3/report.tex}
 
