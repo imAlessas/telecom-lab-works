@@ -16,7 +16,7 @@ In the second part of the lab work, the carrier type changed into a __BASK__ and
 
 ### Laboratory Work 3
 
-The lab work number 3 is a preliminary code that will be used in the lab 4 and 5. In this lab work, the three modulation techniques __BASK__, __BFSK__ and __BPSK__ are used to transmit a random sequence of binary data. In this lab, the _GWN__ is not added using a MATLAB function but it is created in the script.
+The lab work number 3 is a preliminary code that will be used in the lab 4 and 5. In this lab work, the three modulation techniques __BASK__, __BFSK__ and __BPSK__ are used to transmit a random sequence of binary data. In this lab, the _GWN_ is not added using a MATLAB function but it is created in the script.
 
 ### Laboratory Work 4
 
