@@ -22,7 +22,7 @@ The lab work number 3 is a preliminary code that will be used in the lab 4 and 5
 
 The fourth lab work uses the lab 3 code and implements an optimal correlation receiver in all of the three modulation techniques. The correlation receiver is a detection technique that uses the _correlation integral_ to identify the correct symbol in the disturbed signal.
 
-### Laboratory Work 5
+### Laboratory Work 5L
 
 ab work 5 uses the lab 3 code and implements a matched filter receiver in all of the three modulation techniques. This receiver uses the _convolution_ to identify the correct symbol in the disturbed signal.
 
