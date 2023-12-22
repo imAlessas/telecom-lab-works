@@ -24,7 +24,7 @@ The fourth lab work uses the lab 3 code and implements an optimal correlation re
 
 ### Laboratory Work 5
 
-ab work 5 uses the lab 3 code and implements a matched filter receiver in all of the three modulation techniques. This receiver uses the _convolution_ to identify the correct symbol in the disturbed signal.
+Lab work 5 uses the lab 3 code and implements a matched filter receiver in all of the three modulation techniques. This receiver uses the _convolution_ to identify the correct symbol in the disturbed signal.
 
 ### Laboratory Work 6
 
