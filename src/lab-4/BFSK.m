@@ -4,13 +4,15 @@ run("../lab-3/BFSK.m")
 
 
 % Correlator receiver
-f = figure(2);
-f.Position = [450, 100, 700, 600];
-f.Name = 'BFSK';
-
-subplot(311), plot(BFSK_intervals, BFSK_with_noise), grid on; % plot disturbed signal
-xlabel("Time [s]"), ylabel("BFSK signal with noise"); % labels
-ylim([-4 4]); % limits
+if draw_plots
+    f = figure(2);
+    f.Position = [450, 100, 700, 600];
+    f.Name = 'BFSK';
+    
+    subplot(311), plot(BFSK_intervals, BFSK_with_noise), grid on; % plot disturbed signal
+    xlabel("Time [s]"), ylabel("BFSK signal with noise"); % labels
+    ylim([-4 4]); % limits
+end
 
 
 % Recieve each symbol
@@ -43,16 +45,24 @@ end
 
 
 % Plot integrated signal
-subplot(312), plot(BFSK_intervals, integrator1), grid on; % plot 1st integrator
-xlabel("Time [s]"), ylabel("1st Correlator output"); % labels
-ylim([-50, 150]); % limits
-
-
-subplot(313), plot(BFSK_intervals, integrator2), grid on; % plot 2nd integrator
-xlabel("Time [s]"), ylabel("2nd Correlator output"); % labels
-ylim([-50, 150]); % limits
+if draw_plots
+    subplot(312), plot(BFSK_intervals, integrator1), grid on; % plot 1st integrator
+    xlabel("Time [s]"), ylabel("1st Correlator output"); % labels
+    ylim([-50, 150]); % limits
+    
+    
+    subplot(313), plot(BFSK_intervals, integrator2), grid on; % plot 2nd integrator
+    xlabel("Time [s]"), ylabel("2nd Correlator output"); % labels
+    ylim([-50, 150]); % limits
+end
 
 
 % Output data for comparison
-check = binary_sequence == detected_symbols;
-disp(check')
+check = binary_sequence == detected_symbols; % check element-wise
+errors = N - sum(check); % counts errors
+BER = errors / N; % calculates Bit Error Rate
+
+disp("SNR:              " + SNR);
+disp("Total symbols:    " + N);
+disp("Errors:           " + errors);
+disp("BER:              " + BER);

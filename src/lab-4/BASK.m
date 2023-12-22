@@ -3,13 +3,15 @@ clc, clear, format compact
 run("../lab-3/BASK.m")
 
 % Plot disturbed received signal
-f = figure(2);
-f.Position = [450, 100, 700, 600];
-f.Name = 'BASK';
-
-subplot(211), plot(BASK_intervals, BASK_with_noise), grid on; % plot
-xlabel("Time [s]"), ylabel("BASK signal with noise"); % labels
-ylim([-4 4]); % limits
+if draw_plots
+    f = figure(2);
+    f.Position = [450, 100, 700, 600];
+    f.Name = 'BASK';
+    
+    subplot(211), plot(BASK_intervals, BASK_with_noise), grid on; % plot
+    xlabel("Time [s]"), ylabel("BASK signal with noise"); % labels
+    ylim([-4 4]); % limits
+end
 
 
 % Optimal orrelator receiver
@@ -34,12 +36,20 @@ end
 
 
 % Plot integrated signal
-subplot(212), plot(BASK_intervals, integrator), grid on; % plot integrator
-hold on, plot([0 BASK_intervals(end)], [Eb/2 Eb/2], "r-"), hold off; % plot threshold
-xlabel("Time [s]"), ylabel("Correlator output"); % labels
-ylim([-50, 150]); % limits
+if draw_plots
+    subplot(212), plot(BASK_intervals, integrator), grid on; % plot integrator
+    hold on, plot([0 BASK_intervals(end)], [Eb/2 Eb/2], "r-"), hold off; % plot threshold
+    xlabel("Time [s]"), ylabel("Correlator output"); % labels
+    ylim([-50, 150]); % limits
+end
 
 
 % Output data for comparison
-check = binary_sequence == detected_symbols;
-disp(check')
+check = binary_sequence == detected_symbols; % check element-wise
+errors = N - sum(check); % counts errors
+BER = errors / N; % calculates Bit Error Rate
+
+disp("SNR:              " + SNR);
+disp("Total symbols:    " + N);
+disp("Errors:           " + errors);
+disp("BER:              " + BER);
