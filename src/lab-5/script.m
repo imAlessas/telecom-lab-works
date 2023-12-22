@@ -202,7 +202,7 @@ sB = randi(2, 1, N) - 1; % random sequence of 1 and 0
 
 sB_NRZ = -2 * sB + 1;
 
-SNR = 50; %Db
+SNR = 5; %Db
 
 
 

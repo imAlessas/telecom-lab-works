@@ -3,5 +3,5 @@ f0 = 10; % carrier frequecy [Hz]
 N = 15; % number of symbols
 binary_sequence = randi(2, 1, N) - 1; % random sequence of 1 and 0
 % binary_sequence = [0 0 1 0 1 0 0 0 1 1 1 1 0 1 1 ];
-SNR = 5; % Db
+SNR = 20; % Db
 draw_plots = 1;
