@@ -6,16 +6,14 @@
 \maketitle \newpage
 
 \section*{Objective}
-The laboratory's goal is to implement and analyze the effectiveness of the optimal correlator receiver implemented in the three modulation techniques, already explained during laboratory work 3. \todo{Explain functioning of optimal correlation receiver}
+The laboratory's goal is to implement and analyze the effectiveness of the optimal correlator receiver implemented in the three modulation techniques, already explained during laboratory work 3. This kind of receiver uses the \textbf{maximum likelyhood} approach and the \textbf{correlation integral} to detect properly the symbol. The idea behind this operation is rather simple: the correlation integral takes a known input sample signal, like the signal of the 1-symbol, and shifts it along all the received - and disutrbed - signal. When the shifted sample lines up with a part of the disturbed signal, this interval is very likely to represent the same symbol as the sample and the symbol detection will be performed successfully.
 
 \section*{Source code and plots}
 \lstset{style = MATLAB}
 The source code provided in this section has to be appended to the code produced during laboratory 3 so there won't be any explanations regarding the above-mentioned code. Alongside the lines of code, there will be some explanatory comments to make the lab 4 source code more readable.
 
 \subsection*{Task 1}
-The first task of the lab work asked to add to the already-written code the MATLAB script for the optimal correlation receiver. Of course, the receiver has to be implemented in the three modulation techniques.
-
-In all three techniques, the optimal receiver is coded inside in a \textsl{for loop} that cycles through all the symbols, so from 1 to $N$.
+The first task of the lab work asked to add to the already-written code the MATLAB script for the optimal correlation receiver. Of course, the receiver has to be implemented in the three modulation techniques. In all three techniques, the optimal receiver is coded inside in a \textsl{for loop} that cycles through all the symbols, so from 1 to $N$.
 
 \subsubsection*{BASK}
 The first optimal correlator receiver to implement is for the BASK modulation. After creating the integrator vector, inside the for loop, the correlator multiplication is achieved by multiplying element-wise the carrier signal and the disturbed BASK signal. After that, with the help of the cumulative sum (\texttt{cumsum}) function the integral is discretely calculated. At the end of the for loop, the detection is achieved by comparing the symbols in the integrator signal with half of the carrier energy, which is the threshold for the BASK-modulated signal.
