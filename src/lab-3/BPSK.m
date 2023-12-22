@@ -2,12 +2,7 @@ clc, clear, format compact
 
 
 % Task 1
-T = 1; % symbol duration [seconds]
-F0 = 10; % carrier frequecy [Hz]
-N = 15; % number of symbols
-binary_sequence = randi(2, 1, N) - 1; % random sequence of 1 and 0
-% binary_sequence = [0 0 1 0 1 0 0 0 1 1 1 1 0 1 1 ];
-SNR = 15; % Db
+run("./initial_settings.m");
 
 % plot binary data
 f = figure(1);
@@ -23,7 +18,7 @@ ylim([-0.1 1.1]); % limits
 % create carrier signal
 delta_t =  T / 200; % step duration
 t = 0 : delta_t : T - delta_t; % time intervals
-s0 = sin (2 * pi * F0 * t); % carrier signal
+s0 = sin (2 * pi * f0 * t); % carrier signal
 
 
 % Generate BPSK signal with no noise
