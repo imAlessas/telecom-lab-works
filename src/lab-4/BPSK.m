@@ -4,9 +4,9 @@ run("../lab-3/BPSK.m")
 
 % Correlator receiver
 if draw_plots
-    figure(2);
-    f.Name = 'BPSK';
+    f = figure(2);
     f.Position = [450, 100, 700, 600];
+    f.Name = 'BPSK';
     
     subplot(211), plot(BPSK_intervals, BPSK_with_noise), grid on; % plot
     xlabel("Time [s]"), ylabel("BPSK signal with noise"); % labels
@@ -42,12 +42,5 @@ if draw_plots
 end
 
 
-% Output data for comparison
-check = binary_sequence == detected_symbols; % check element-wise
-errors = N - sum(check); % counts errors
-BER = errors / N; % calculates Bit Error Rate
-
-disp("SNR:              " + SNR);
-disp("Total symbols:    " + N);
-disp("Errors:           " + errors);
-disp("BER:              " + BER);
+% Output data for 
+run("show_BER.m");
