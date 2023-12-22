@@ -8,8 +8,9 @@ f = figure(2);
 f.Position = [450, 100, 700, 600];
 f.Name = 'BFSK';
 
-subplot(311), plot(BFSK_intervals, BFSK_with_noise), grid on
-ylim([-4 4]), xlabel("Time [s]"), ylabel("BFSK signal with noise")
+subplot(311), plot(BFSK_intervals, BFSK_with_noise), grid on; % plot disturbed signal
+xlabel("Time [s]"), ylabel("BFSK signal with noise"); % labels
+ylim([-4 4]); % limits
 
 
 % Recieve each symbol
@@ -35,20 +36,21 @@ for k = 1:N
     integrator2 = [integrator2, cumsum(sM2)];
 
     % detects symbols
+    
     detected_symbols(k) = integrator1(end) > integrator2(end);
 end
 
 
 
 % Plot integrated signal
-subplot(312), plot(BFSK_intervals, integrator1), grid on
-hold on, plot([0 BFSK_intervals(end)], [Eb/2 Eb/2], "r-"), hold off; % plot threshold
-ylim([-50, 150]), xlabel("Time [s]"), ylabel("1st Correlator output")
+subplot(312), plot(BFSK_intervals, integrator1), grid on; % plot 1st integrator
+xlabel("Time [s]"), ylabel("1st Correlator output"); % labels
+ylim([-50, 150]); % limits
 
 
-subplot(313), plot(BFSK_intervals, integrator2), grid on
-hold on, plot([0 BFSK_intervals(end)], [Eb/2 Eb/2], "r-"), hold off; % plot threshold
-ylim([-50, 150]), xlabel("Time [s]"), ylabel("2nd Correlator output")
+subplot(313), plot(BFSK_intervals, integrator2), grid on; % plot 2nd integrator
+xlabel("Time [s]"), ylabel("2nd Correlator output"); % labels
+ylim([-50, 150]); % limits
 
 
 % Output data for comparison

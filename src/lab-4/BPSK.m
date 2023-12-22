@@ -4,8 +4,12 @@ run("../lab-3/BPSK.m")
 
 % Correlator receiver
 figure(2);
-subplot(211), plot(BPSK_intervals, BPSK_with_noise), grid on
-ylim([-4, 4]), xlabel("Time [s]"), ylabel("BPSK signal with noise")
+f.Name = 'BPSK';
+f.Position = [450, 100, 700, 600];
+
+subplot(211), plot(BPSK_intervals, BPSK_with_noise), grid on; % plot
+xlabel("Time [s]"), ylabel("BPSK signal with noise"); % labels
+ylim([-4, 4]); % limits
 
 
 % Recieve each symbol
@@ -28,9 +32,10 @@ end
 
 
 % Plot integrated signal
-subplot(212), plot(BPSK_intervals, integrator), grid on
-hold on, plot([0 BPSK_intervals(end)], [0, 0], "r"), hold off
-ylim([-150 150]), xlabel("Time [s]"), ylabel("1st Correlator output")
+subplot(212), plot(BPSK_intervals, integrator), grid on % plot integrator
+hold on, plot([0 BPSK_intervals(end)], [0 0], "r-"), hold off; % plot threshold
+xlabel("Time [s]"), ylabel("Correlator output"); % labels
+ylim([-150, 150]); % limits
 
 
 % Output data for comparison
