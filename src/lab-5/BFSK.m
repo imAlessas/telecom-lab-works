@@ -22,25 +22,25 @@ s1_flipped = fliplr(s1);
 s2_flipped = fliplr(s2);
 
 % output of matched filter
-convolution_1 = filter(s1_flipped, 1, BFSK_with_noise);
-convolution_2 = filter(s2_flipped, 1, BFSK_with_noise);
+convolution_signal_1 = filter(s1_flipped, 1, BFSK_with_noise);
+convolution_signal_2 = filter(s2_flipped, 1, BFSK_with_noise);
 
 
 % detected symbols
 L = length(s1);
-sampled_signal_1 = convolution_1(L:L:end);
-sampled_signal_2 = convolution_2(L:L:end);
+sampled_signal_1 = convolution_signal_1(L:L:end);
+sampled_signal_2 = convolution_signal_2(L:L:end);
 detected_symbols = sampled_signal_1 > sampled_signal_2;
 
 
 % plotting
 if draw_plots
     ylimit = 125;
-    subplot(312), plot(BFSK_intervals, convolution_1), grid on; % plot 1st matched filter signal
+    subplot(312), plot(BFSK_intervals, convolution_signal_1), grid on; % plot 1st matched filter signal
     xlabel('Time [s]'), ylabel('1st matched filter'); % labels
     ylim([-ylimit, ylimit]); % limits
     
-    subplot(313), plot(BFSK_intervals, convolution_2), grid on; % plot 2nd matched filter signal
+    subplot(313), plot(BFSK_intervals, convolution_signal_2), grid on; % plot 2nd matched filter signal
     xlabel('Time [s]'), ylabel('2nd matched filter'); % labels
     ylim([-ylimit, ylimit]); % limits
 end

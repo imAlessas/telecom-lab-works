@@ -21,19 +21,19 @@ end
 s0_flipped = fliplr(s0);
 
 % Covolution two methods
-convolution = conv(s0_flipped, BPSK_with_noise);
-convolution = convolution(1:length(BPSK_with_noise)); % trunkating lenght
+convolution_signal = conv(s0_flipped, BPSK_with_noise);
+convolution_signal = convolution_signal(1:length(BPSK_with_noise)); % trunkating lenght
 
 % detected symbols
 L = length(s0); % length of carrier signal
-sampled_signal = convolution(L : L: end);
+sampled_signal = convolution_signal(L : L: end);
 detected_symbols = sampled_signal < 0;
 
 
 % plotting
 if draw_plots
     ylimit = 125;
-    subplot(212), plot(BPSK_intervals, convolution), grid on; % plot matched filter signal
+    subplot(212), plot(BPSK_intervals, convolution_signal), grid on; % plot matched filter signal
     hold on, plot( [0, BPSK_intervals(end)], [0, 0], 'r'), hold off; % plot threshold
     xlabel('Time, s'), ylabel('Matched Filter'); % labels
     ylim([-ylimit, ylimit]); % limits

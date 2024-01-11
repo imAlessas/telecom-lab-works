@@ -21,20 +21,20 @@ end
 s0_flipped = fliplr(s0);
 
 % Perform covolution
-convolution = conv(s0_flipped, BASK_with_noise);
-convolution = convolution(1:length(BASK_with_noise)); % trunkating lenght
+convolution_signal = conv(s0_flipped, BASK_with_noise);
+convolution_signal = convolution_signal(1:length(BASK_with_noise)); % trunkating lenght
 
 
 % detected symbols
 L = length(s0); % length of carrier signal
-sampled_signal = convolution(L : L : end);
+sampled_signal = convolution_signal(L : L : end);
 detected_symbols = sampled_signal > Eb / 2;
 
 
 % plotting
 if draw_plots
     ylimit = 125;
-    subplot(212), plot(BASK_intervals, convolution), grid on; % plot matched filter signal
+    subplot(212), plot(BASK_intervals, convolution_signal), grid on; % plot matched filter signal
     hold on, plot( [0, BASK_intervals(end)], [Eb/2, Eb/2], 'r'), hold off; % plot threshold
     xlabel('Time, s'), ylabel('Covolution Output'); % labels
     ylim([-ylimit, ylimit]); % limits
