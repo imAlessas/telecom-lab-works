@@ -28,9 +28,9 @@ convolution_2 = filter(s2_flipped, 1, BFSK_with_noise);
 
 % detected symbols
 L = length(s1);
-estimated_signal_1 = convolution_1(L:L:end);
-estimated_signal_2 = convolution_2(L:L:end);
-detected_symbols = estimated_signal_1 > estimated_signal_2;
+sampled_signal_1 = convolution_1(L:L:end);
+sampled_signal_2 = convolution_2(L:L:end);
+detected_symbols = sampled_signal_1 > sampled_signal_2;
 
 
 % plotting

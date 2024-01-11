@@ -27,8 +27,8 @@ convolution = convolution(1:length(BASK_with_noise)); % trunkating lenght
 
 % detected symbols
 L = length(s0); % length of carrier signal
-estimated_signal = convolution(L : L : end);
-detected_symbols = estimated_signal > Eb / 2;
+sampled_signal = convolution(L : L : end);
+detected_symbols = sampled_signal > Eb / 2;
 
 
 % plotting

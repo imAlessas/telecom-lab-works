@@ -26,8 +26,8 @@ convolution = convolution(1:length(BPSK_with_noise)); % trunkating lenght
 
 % detected symbols
 L = length(s0); % length of carrier signal
-estimated_signal = convolution(L : L: end);
-detected_symbols = estimated_signal < 0;
+sampled_signal = convolution(L : L: end);
+detected_symbols = sampled_signal < 0;
 
 
 % plotting
