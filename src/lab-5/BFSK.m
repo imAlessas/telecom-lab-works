@@ -15,32 +15,32 @@ if draw_plots
 end
 
 
-%  matched filter -- REFACTOR VARIABLES
+%  matched filter
 
 % impulse response
-hMF1 = fliplr(s1);
-hMF2 = fliplr(s2);
+s1_flipped = fliplr(s1);
+s2_flipped = fliplr(s2);
 
 % output of matched filter
-sMF1 = filter(hMF1, 1, BFSK_with_noise);
-sMF2 = filter(hMF2, 1, BFSK_with_noise);
+covolution_1 = filter(s1_flipped, 1, BFSK_with_noise);
+covolution_2 = filter(s2_flipped, 1, BFSK_with_noise);
 
 
 % detected symbols
 L = length(s1);
-Es1 = sMF1(L:L:end);
-Es2 = sMF2(L:L:end);
-detected_symbols = Es1 > Es2;
+estimated_signal_1 = covolution_1(L:L:end);
+estimated_signal_2 = covolution_2(L:L:end);
+detected_symbols = estimated_signal_1 > estimated_signal_2;
 
 
 % plotting
 if draw_plots
     ylimit = 125;
-    subplot(312), plot(BFSK_intervals, sMF1), grid on; % plot 1st matched filter signal
+    subplot(312), plot(BFSK_intervals, covolution_1), grid on; % plot 1st matched filter signal
     xlabel("Time [s]"), ylabel("1st matched filter"); % labels
     ylim([-ylimit, ylimit]); % limits
     
-    subplot(313), plot(BFSK_intervals, sMF2), grid on; % plot 2nd matched filter signal
+    subplot(313), plot(BFSK_intervals, covolution_2), grid on; % plot 2nd matched filter signal
     xlabel("Time [s]"), ylabel("2nd matched filter"); % labels
     ylim([-ylimit, ylimit]); % limits
 end

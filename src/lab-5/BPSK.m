@@ -15,26 +15,26 @@ if draw_plots
 end
 
 
-%  matched filter -- REFACTOR VARIABLES
+%  matched filter
 
 % flip the carrier to make the covolution
-hMF1 = fliplr(s0);
+s0_flipped = fliplr(s0);
 
 % Covolution two methods
 % sMF1 = filtef(hMF1, 1, BPSK_with_noise);
-sMF1 = conv(hMF1, BPSK_with_noise);
-sMF1 = sMF1(1:length(BPSK_with_noise)); % trunkating lenght
+covolution = conv(s0_flipped, BPSK_with_noise);
+covolution = covolution(1:length(BPSK_with_noise)); % trunkating lenght
 
 % detected symbols
 L = length(s0); % length of carrier signal
-Es = sMF1(L : L: end);
-detected_symbols = Es < 0;
+estimated_signal = covolution(L : L: end);
+detected_symbols = estimated_signal < 0;
 
 
 % plotting
 if draw_plots
     ylimit = 125;
-    subplot(212), plot(BPSK_intervals, sMF1), grid on; % plot matched filter signal
+    subplot(212), plot(BPSK_intervals, covolution), grid on; % plot matched filter signal
     hold on, plot( [0, BPSK_intervals(end)], [0, 0], "r"), hold off; % plot threshold
     xlabel("Time, s"), ylabel("Matched Filter"); % labels
     ylim([-ylimit, ylimit]); % limits
